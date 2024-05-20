@@ -72,6 +72,11 @@ const description: string = ref('')
 				text="Done"
 				@method="show = !show"
 			/>
+			<VButton 
+				type="button"
+				text="Delete"
+				@method="remove(task.id)"
+			/>
 		</li>
 	</ul>
 </template>
