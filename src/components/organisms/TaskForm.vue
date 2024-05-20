@@ -6,10 +6,7 @@ import VForm from '@/components/molecules/VForm.vue'
 import { useTaskRepoStore } from '@/stores/taskRepo.ts'
 import { ref, type Ref } from 'vue'
 
-defineProps<{
-	value?: string
-}>()
-const { get, create, updateStatus, updateDesc, remove, state } = useTaskRepoStore()
+const { create } = useTaskRepoStore()
 
 const title: Ref<string> = ref('')
 const description: Ref<string | undefined> = ref('')
@@ -33,7 +30,7 @@ const description: Ref<string | undefined> = ref('')
 		/>
 		<VInput
 			tag="textarea"
-			v-model:description="description"
+			v-model:value="description"
 		/>
 		<VButton 
 			type="submit"

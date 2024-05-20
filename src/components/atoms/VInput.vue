@@ -1,10 +1,13 @@
 <script setup lang="ts">
 defineProps<{
-	type: string
+	tag: string
+	type?: string
 }>()
+
+const value = defineModel('value')
 
 </script>
 
 <template>
-	<input :type="type" />
+	<component :is="tag" :type="type" v-model="value"></component>
 </template>
