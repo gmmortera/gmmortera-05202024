@@ -11,7 +11,7 @@ import TheWelcome from './components/TheWelcome.vue'
       <HelloWorld msg="You did it!" />
     </div>
   </header>
-
+  <p>DAS KRAZY</p>
   <main>
     <TheWelcome />
   </main>
