@@ -31,6 +31,7 @@ const description: string = ref('')
 				:text="task.status"
 			/>
 			<VButton 
+				v-if="show"
 				type="button"
 				text="Start"
 				@method="updateStatus(task.id)"
@@ -73,6 +74,7 @@ const description: string = ref('')
 				@method="show = !show"
 			/>
 			<VButton 
+				v-if="show"
 				type="button"
 				text="Delete"
 				@method="remove(task.id)"
