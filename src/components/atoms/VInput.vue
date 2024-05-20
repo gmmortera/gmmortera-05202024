@@ -1,12 +1,10 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
 	type: string
-	value?: string
 }>()
-const emit = defineEmits(['method'])
 
 </script>
 
 <template>
-	<input :type="type" @click.prevent="emit('method', value)" />
+	<input :type="type" />
 </template>
