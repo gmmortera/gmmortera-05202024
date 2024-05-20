@@ -9,7 +9,16 @@ import { ref, type Ref } from 'vue'
 const { create } = useTaskRepoStore()
 
 const title: Ref<string> = ref('')
-const description: Ref<string | undefined> = ref('')
+const description: Ref<string> = ref('')
+
+const addTask = () => {
+	create(title.value, description.value)
+	console.log(title.value)
+	console.log(description.value)
+	title.value = ''
+	description.value = ''
+	console.log('HERE')
+}
 
 </script>
 
@@ -20,22 +29,23 @@ const description: Ref<string | undefined> = ref('')
 			text="Title"
 		/>
 		<VInput
-			tag="input"
 			type="text"
-			v-model:title="title"
+			v-model:value="title"
+			maxlength="250"
+			required
 		/>
 		<VText 
 			tag="label"
 			text="Description"
 		/>
 		<VInput
-			tag="textarea"
 			v-model:value="description"
+			maxlength="1000"
 		/>
 		<VButton 
 			type="submit"
 			text="Add"
-			@method="create(title, description)"
+			@method="addTask"
 		/>
 	</VForm>
 </template>

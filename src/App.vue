@@ -1,7 +1,17 @@
 <script setup lang="ts">
+import TaskForm from '@/components/organisms/TaskForm.vue'
+import TaskList from '@/components/organisms/TaskList.vue'
 </script>
 
 <template>
+  <main>
+    <section>
+      <TaskForm />
+    </section>
+    <section>
+      <TaskList />
+    </section>
+  </main>
 </template>
 
 <style scoped>

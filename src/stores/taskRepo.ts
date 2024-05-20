@@ -39,7 +39,7 @@ const useTaskRepoStore = defineStore('task-repo', () => {
 
 	}
 
-	const updateDesc = (id: uuid, newDesc?: string = ''): void => {
+	const updateInfo = (id: uuid, newName: string, newDesc?: string = ''): void => {
 		const currTask = tasks.value.find((t) => t.id === id)
 
 		if(!currTask) {
@@ -47,6 +47,7 @@ const useTaskRepoStore = defineStore('task-repo', () => {
 			return
 		} else {
 			currTask.description = newDesc
+			currTask.title = newName
 			state.value = { isError: false, message: 'Update successful' }
 		}
 
@@ -64,7 +65,7 @@ const useTaskRepoStore = defineStore('task-repo', () => {
 		}
 	}
 
-	return { get, create, updateStatus, updateDesc, remove, state }
+	return { get, create, updateStatus, updateInfo, remove, state }
 })
 
 export { useTaskRepoStore }
