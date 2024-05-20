@@ -7,7 +7,7 @@ import { useTaskRepoStore } from '@/stores/taskRepo.ts'
 import { ref, type Ref } from 'vue'
 import { v4 as uuid } from 'uuid'
 
-const { get, create, updateStatus, updateDesc, remove, state } = useTaskRepoStore()
+const { get, create, updateStatus, updateInfo, remove, state } = useTaskRepoStore()
 
 const show: boolean = ref(false)
 const description: string = ref('')
@@ -36,23 +36,42 @@ const description: string = ref('')
 				@method="updateStatus(task.id)"
 			/>
 			<div v-if="show">
-				<VInput 
-					v-if="show"
-					tag="input"
+				<VText 
+					tag="label"
+					text="New Title"
+				/>
+				<VInput
+					type="text"
+					v-model:value="title"
+					maxlength="250"
+				/>
+				<VText 
+					tag="label"
+					text="New Description"
+				/>
+				<VInput
 					type="text"
 					v-model:value="description"
+					maxlength="1000"
 				/>
 				<VButton 
 					type="button"
 					text="Add"
-					@method="updateDesc(task.id, description)"
+					@method="updateInfo(task.id, title, description)"
 				/>
 			</div>
-			<VButton 
-					type="button"
-					text="Edit"
-					@method="show = !show"
-				/>
+			<VButton
+				v-if="!show"
+				type="button"
+				text="Edit"
+				@method="show = !show"
+			/>
+			<VButton
+				v-else
+				type="button"
+				text="Done"
+				@method="show = !show"
+			/>
 		</li>
 	</ul>
 </template>
